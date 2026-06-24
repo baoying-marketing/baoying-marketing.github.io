@@ -1,0 +1,649 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Ying Bao — Marketing, Gies College of Business, UIUC</title>
+<meta name="description" content="Ying Bao is an Assistant Professor of Marketing at the Gies College of Business, University of Illinois Urbana-Champaign, studying digital marketing, platforms, behavioral economics, and food marketing." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Hanken+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+  :root{
+    --paper:#F6F2EA;        /* warm ivory ground */
+    --paper-2:#FBF8F2;      /* raised surface */
+    --ink:#1C1A15;          /* warm near-black */
+    --ink-2:#4A463D;        /* secondary text */
+    --muted:#827D70;        /* captions, meta */
+    --line:#E4DDCE;         /* hairlines */
+    --line-2:#D6CDB9;
+    --clay:#C2674A;         /* the one accent */
+    --clay-deep:#A8533A;
+    --clay-wash:#F0E2D8;
+    --maxw:1080px;
+    --ease:cubic-bezier(.22,.61,.36,1);
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:"Hanken Grotesk",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+    font-size:17px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+  }
+  a{color:inherit}
+  ::selection{background:var(--clay-wash);color:var(--clay-deep)}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px}
+
+  /* ---------- nav ---------- */
+  header.nav{
+    position:sticky;top:0;z-index:50;
+    background:color-mix(in srgb, var(--paper) 86%, transparent);
+    backdrop-filter:saturate(140%) blur(10px);
+    border-bottom:1px solid transparent;
+    transition:border-color .3s var(--ease), background .3s var(--ease);
+  }
+  header.nav.scrolled{border-bottom-color:var(--line);}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:68px}
+  .brand{font-family:"Fraunces",serif;font-weight:600;font-size:19px;letter-spacing:.01em;text-decoration:none}
+  .brand .dot{color:var(--clay)}
+  nav.links{display:flex;align-items:center;gap:30px}
+  nav.links a{
+    text-decoration:none;color:var(--ink-2);font-size:15px;font-weight:500;
+    position:relative;padding:4px 0;transition:color .2s var(--ease);
+  }
+  nav.links a::after{
+    content:"";position:absolute;left:0;right:0;bottom:-2px;height:1.5px;
+    background:var(--clay);transform:scaleX(0);transform-origin:left;
+    transition:transform .25s var(--ease);
+  }
+  nav.links a:hover{color:var(--ink)}
+  nav.links a:hover::after,nav.links a.active::after{transform:scaleX(1)}
+  nav.links a.active{color:var(--ink)}
+  .nav-cv{
+    text-decoration:none;font-size:14px;font-weight:600;color:var(--paper-2);
+    background:var(--ink);padding:8px 16px;border-radius:999px;
+    transition:background .2s var(--ease),transform .2s var(--ease);
+  }
+  .nav-cv:hover{background:var(--clay-deep);transform:translateY(-1px)}
+  .menu-btn{display:none;background:none;border:0;cursor:pointer;padding:8px;color:var(--ink)}
+
+  /* ---------- hero ---------- */
+  .hero{padding:84px 0 70px}
+  .hero-grid{display:grid;grid-template-columns:1.35fr .9fr;gap:64px;align-items:center}
+  .eyebrow{
+    font-family:"JetBrains Mono",monospace;font-size:12.5px;font-weight:500;
+    letter-spacing:.16em;text-transform:uppercase;color:var(--clay-deep);
+    margin:0 0 22px;display:flex;align-items:center;gap:12px;
+  }
+  .eyebrow::before{content:"";width:26px;height:1.5px;background:var(--clay)}
+  h1.name{
+    font-family:"Fraunces",serif;font-weight:600;
+    font-size:clamp(46px,7.2vw,84px);line-height:.96;letter-spacing:-.02em;
+    margin:0 0 24px;
+  }
+  .role{font-size:clamp(18px,2.2vw,21px);font-weight:500;color:var(--ink);margin:0 0 4px}
+  .affil{font-size:17px;color:var(--ink-2);margin:0 0 26px;max-width:34ch}
+  .affil a{color:var(--clay-deep);text-decoration:none;border-bottom:1px solid var(--clay-wash)}
+  .affil a:hover{border-bottom-color:var(--clay)}
+  .lede{font-size:18.5px;line-height:1.62;color:var(--ink-2);max-width:46ch;margin:0 0 34px}
+  .lede b{color:var(--ink);font-weight:600}
+  .cta-row{display:flex;gap:14px;flex-wrap:wrap}
+  .btn{
+    text-decoration:none;font-weight:600;font-size:15px;padding:12px 22px;border-radius:999px;
+    transition:transform .2s var(--ease),background .2s var(--ease),border-color .2s var(--ease);
+    display:inline-flex;align-items:center;gap:9px;
+  }
+  .btn-primary{background:var(--clay);color:#fff}
+  .btn-primary:hover{background:var(--clay-deep);transform:translateY(-2px)}
+  .btn-ghost{background:transparent;color:var(--ink);border:1.5px solid var(--line-2)}
+  .btn-ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+  .btn svg{width:16px;height:16px}
+
+  /* portrait */
+  .portrait-wrap{position:relative;justify-self:center}
+  .portrait-wrap::before{
+    content:"";position:absolute;inset:18px -18px -18px 18px;border-radius:18px;
+    background:linear-gradient(150deg,var(--clay-wash),#EAE0CF);z-index:0;
+  }
+  .portrait{
+    position:relative;z-index:1;width:min(330px,72vw);aspect-ratio:397/425;
+    object-fit:cover;border-radius:16px;display:block;
+    border:1px solid var(--line);
+    box-shadow:0 24px 50px -28px rgba(40,30,20,.5);
+  }
+  .portrait-tag{
+    position:absolute;z-index:2;bottom:-14px;left:-14px;
+    background:var(--paper-2);border:1px solid var(--line);border-radius:11px;
+    padding:9px 14px;font-family:"JetBrains Mono",monospace;font-size:11.5px;
+    letter-spacing:.04em;color:var(--ink-2);box-shadow:0 10px 24px -16px rgba(40,30,20,.5);
+  }
+  .portrait-tag b{color:var(--clay-deep)}
+
+  /* interest chips under hero */
+  .chips{display:flex;flex-wrap:wrap;gap:9px;margin-top:54px;padding-top:30px;border-top:1px solid var(--line)}
+  .chip{
+    font-size:13.5px;font-weight:500;color:var(--ink-2);
+    background:var(--paper-2);border:1px solid var(--line);border-radius:999px;padding:7px 15px;
+  }
+  .chips .lbl{font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--muted);align-self:center;margin-right:6px}
+
+  /* education credential band */
+  .edu-band{margin-top:26px;padding-top:26px;border-top:1px solid var(--line);
+    display:flex;gap:22px;flex-wrap:wrap;align-items:flex-start}
+  .edu-band .lbl{font-family:"JetBrains Mono",monospace;font-size:11.5px;letter-spacing:.12em;
+    text-transform:uppercase;color:var(--muted);padding-top:3px}
+  .edu-items{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;flex:1;min-width:260px}
+  .edu{display:flex;flex-direction:column;gap:3px}
+  .edu-deg{font-weight:600;font-size:15px;color:var(--ink)}
+  .edu-where{font-size:13px;color:var(--muted);line-height:1.45}
+
+  /* ---------- section frame ---------- */
+  section.block{padding:78px 0;border-top:1px solid var(--line)}
+  .sec-head{display:flex;align-items:baseline;gap:18px;margin-bottom:40px}
+  .sec-num{font-family:"JetBrains Mono",monospace;font-size:14px;color:var(--clay);font-weight:500}
+  .sec-title{font-family:"Fraunces",serif;font-weight:600;font-size:clamp(30px,4vw,42px);
+    letter-spacing:-.01em;margin:0;line-height:1}
+  .sec-sub{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.14em;
+    text-transform:uppercase;color:var(--muted);margin-left:auto;align-self:center}
+
+  /* ---------- publications (the signature index) ---------- */
+  .subhead{
+    font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.16em;text-transform:uppercase;
+    color:var(--ink-2);margin:46px 0 8px;display:flex;align-items:center;gap:12px;
+  }
+  .subhead:first-of-type{margin-top:0}
+  .subhead .count{color:var(--muted);font-weight:400}
+  ol.papers{list-style:none;margin:0;padding:0}
+  ol.papers li{
+    display:grid;grid-template-columns:46px 1fr;gap:8px;
+    padding:24px 0;border-top:1px solid var(--line);
+  }
+  ol.papers li:last-child{border-bottom:1px solid var(--line)}
+  .pidx{font-family:"JetBrains Mono",monospace;font-size:15px;color:var(--clay);
+    padding-top:3px;font-weight:500}
+  .ptitle{font-family:"Fraunces",serif;font-size:21px;font-weight:500;line-height:1.28;
+    letter-spacing:-.005em;margin:0 0 7px;color:var(--ink)}
+  .pmeta{font-size:15.5px;color:var(--ink-2);margin:0 0 4px}
+  .pvenue{font-style:italic}
+  .pvenue.em{color:var(--ink);font-weight:500}
+  .pextra{font-size:14px;color:var(--muted);margin:8px 0 0;line-height:1.5}
+  .paper-foot{display:flex;align-items:center;flex-wrap:wrap;gap:10px;margin-top:11px}
+  .doi{
+    font-family:"JetBrains Mono",monospace;font-size:12.5px;font-weight:500;text-decoration:none;
+    color:var(--clay-deep);display:inline-flex;align-items:center;gap:6px;
+    border:1px solid var(--line-2);border-radius:7px;padding:4px 10px;
+    transition:background .2s var(--ease),border-color .2s var(--ease);
+  }
+  .doi:hover{background:var(--clay-wash);border-color:var(--clay)}
+  .doi svg{width:12px;height:12px}
+  .badge{
+    font-family:"JetBrains Mono",monospace;font-size:11.5px;font-weight:500;letter-spacing:.03em;
+    padding:4px 11px;border-radius:7px;border:1px solid;
+  }
+  .badge.active{color:var(--clay-deep);background:var(--clay-wash);border-color:#E2C3B4}
+  .badge.neutral{color:var(--ink-2);background:var(--paper-2);border-color:var(--line-2)}
+  .yr{font-family:"JetBrains Mono",monospace;font-size:12.5px;color:var(--muted)}
+
+  /* ---------- teaching ---------- */
+  .teach-grid{display:grid;grid-template-columns:1fr 1fr;gap:26px}
+  .tcol-label{font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.16em;
+    text-transform:uppercase;color:var(--clay-deep);margin:0 0 18px}
+  .course{
+    background:var(--paper-2);border:1px solid var(--line);border-radius:14px;
+    padding:22px 22px 20px;margin-bottom:16px;
+    transition:transform .25s var(--ease),box-shadow .25s var(--ease),border-color .25s var(--ease);
+  }
+  .course:hover{transform:translateY(-3px);box-shadow:0 18px 36px -26px rgba(40,30,20,.45);border-color:var(--line-2)}
+  .course:last-child{margin-bottom:0}
+  .course-top{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+  .course-code{font-family:"JetBrains Mono",monospace;font-size:13px;color:var(--clay-deep);font-weight:500}
+  .course-when{font-family:"JetBrains Mono",monospace;font-size:12px;color:var(--muted)}
+  .course-name{font-family:"Fraunces",serif;font-size:20px;font-weight:500;margin:6px 0 14px;line-height:1.2}
+  .course-name .lang{font-size:14px;color:var(--muted);font-family:"JetBrains Mono",monospace;font-weight:400}
+  .awards{display:flex;flex-wrap:wrap;gap:7px}
+  .award{
+    font-size:12.5px;font-weight:500;color:var(--clay-deep);
+    background:var(--clay-wash);border-radius:6px;padding:3px 9px;
+    display:inline-flex;align-items:center;gap:5px;
+  }
+  .award svg{width:11px;height:11px}
+  .teach-interests{margin-bottom:34px;font-size:16px;color:var(--ink-2)}
+  .teach-interests b{color:var(--ink);font-weight:600}
+
+  /* ---------- contact / footer ---------- */
+  footer.foot{padding:78px 0 46px;border-top:1px solid var(--line)}
+  .foot-grid{display:grid;grid-template-columns:1.2fr 1fr;gap:48px;align-items:end}
+  .foot-cta{font-family:"Fraunces",serif;font-size:clamp(28px,4vw,40px);font-weight:500;
+    line-height:1.08;letter-spacing:-.01em;margin:0 0 22px}
+  .foot-mail{
+    font-size:18px;font-weight:600;text-decoration:none;color:var(--clay-deep);
+    display:inline-flex;align-items:center;gap:9px;
+  }
+  .foot-mail:hover{color:var(--clay)}
+  .foot-mail svg{width:18px;height:18px}
+  .foot-links{display:flex;flex-direction:column;gap:11px}
+  .foot-links a{font-size:15px;color:var(--ink-2);text-decoration:none;
+    display:inline-flex;align-items:center;gap:9px;transition:color .2s var(--ease)}
+  .foot-links a:hover{color:var(--clay-deep)}
+  .foot-links a svg{width:14px;height:14px;color:var(--muted)}
+  .foot-bottom{display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;
+    margin-top:54px;padding-top:24px;border-top:1px solid var(--line);
+    font-size:13px;color:var(--muted)}
+  .foot-bottom .brand-sm{font-family:"Fraunces",serif;font-weight:600;color:var(--ink-2)}
+
+  /* ---------- reveal animation ---------- */
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+  .reveal.in{opacity:1;transform:none}
+  @media (prefers-reduced-motion:reduce){
+    .reveal{opacity:1;transform:none;transition:none}
+  }
+
+  /* ---------- responsive ---------- */
+  @media (max-width:860px){
+    .hero-grid{grid-template-columns:1fr;gap:46px}
+    .portrait-wrap{justify-self:start;order:-1}
+    .foot-grid{grid-template-columns:1fr;gap:32px}
+    .teach-grid{grid-template-columns:1fr;gap:8px}
+  }
+  @media (max-width:680px){
+    body{font-size:16px}
+    nav.links{
+      position:fixed;inset:68px 0 auto 0;flex-direction:column;align-items:stretch;gap:0;
+      background:var(--paper-2);border-bottom:1px solid var(--line);padding:8px 0;
+      transform:translateY(-12px);opacity:0;pointer-events:none;
+      transition:transform .25s var(--ease),opacity .25s var(--ease);
+    }
+    nav.links.open{transform:none;opacity:1;pointer-events:auto}
+    nav.links a{padding:14px 28px;font-size:16px}
+    nav.links a::after{display:none}
+    .nav-cv{display:none}
+    .menu-btn{display:inline-flex}
+    .hero{padding:54px 0 50px}
+    section.block{padding:60px 0}
+    .sec-sub{display:none}
+    ol.papers li{grid-template-columns:32px 1fr}
+    .chips .lbl{width:100%}
+  }
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap nav-inner">
+    <a href="#home" class="brand">Ying Bao<span class="dot">.</span></a>
+    <nav class="links" id="navlinks">
+      <a href="#research">Research</a>
+      <a href="#teaching">Teaching</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="menu-btn" id="menuBtn" aria-label="Menu" aria-expanded="false">
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="7" x2="21" y2="7"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="17" x2="21" y2="17"/></svg>
+    </button>
+  </div>
+</header>
+
+<main>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="wrap hero-grid">
+      <div class="reveal">
+        <h1 class="name">Ying Bao</h1>
+        <p class="role">Assistant Professor of Marketing</p>
+        <p class="affil"><a href="https://giesbusiness.illinois.edu/profile/ying-bao" target="_blank" rel="noopener">Gies College of Business</a>, University of Illinois Urbana-Champaign</p>
+        <p class="lede">My research pairs structural empirical methods with economic theory to study <b>digital platforms</b> — how quality disclosure, content moderation, and commission design shape what firms and consumers do. A second line of work examines <b>food marketing and consumer well-being</b>, from consumption tracking to the link between obesity and food-tax policy.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="#research">
+            Read the research
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </a>
+          <a class="btn btn-ghost" href="mailto:ybao@illinois.edu">Email me</a>
+        </div>
+      </div>
+
+      <div class="portrait-wrap reveal">
+        <img class="portrait" src="assets/ying-bao.png" alt="Portrait of Ying Bao" />
+      </div>
+    </div>
+
+    <div class="wrap">
+      <div class="chips reveal">
+        <span class="lbl">Research interests</span>
+        <span class="chip">Digital Marketing</span>
+        <span class="chip">Platform Design</span>
+        <span class="chip">Technology Adoption</span>
+        <span class="chip">Behavioral Economics</span>
+        <span class="chip">Food Marketing</span>
+      </div>
+
+      <div class="edu-band reveal">
+        <span class="lbl">Education</span>
+        <div class="edu-items">
+          <div class="edu">
+            <span class="edu-deg">Ph.D., Marketing (Quantitative)</span>
+            <span class="edu-where">Rotman School of Management, University of Toronto · 2020</span>
+          </div>
+          <div class="edu">
+            <span class="edu-deg">M.A., Economics</span>
+            <span class="edu-where">University of Toronto · 2014</span>
+          </div>
+          <div class="edu">
+            <span class="edu-deg">B.Sc., Financial Economics</span>
+            <span class="edu-where">University of Toronto · 2013</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section class="block" id="research">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">01</span>
+        <h2 class="sec-title">Research</h2>
+      </div>
+
+      <p class="subhead reveal">Publications <span class="count">/ peer-reviewed</span></p>
+      <ol class="papers">
+        <li class="reveal">
+          <span class="pidx">05</span>
+          <div>
+            <p class="ptitle">Personalized nutrition: perspectives on challenges, opportunities, and guiding principles for data use and fusion</p>
+            <p class="pmeta">Donovan, S. M., Abrahams, M., Anthony, J. C., <b>Bao, Y.</b>, Barragan, M., Bermingham, K. M., … Winters, B. L.</p>
+            <p class="pmeta"><span class="pvenue em">Critical Reviews in Food Science and Nutrition</span>, 1–18.</p>
+            <div class="paper-foot">
+              <span class="yr">2025</span>
+              <a class="doi" href="https://doi.org/10.1080/10408398.2025.2461237" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                doi.org/10.1080/10408398.2025.2461237
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <li class="reveal">
+          <span class="pidx">04</span>
+          <div>
+            <p class="ptitle">Forgetful Consumers and Consumption Tracking</p>
+            <p class="pmeta"><b>Ying Bao</b>, Peter Landry, Mengze Shi</p>
+            <p class="pmeta"><span class="pvenue em">Management Science</span>, 71(3), 2311–2331.</p>
+            <div class="paper-foot">
+              <span class="yr">2025</span>
+              <a class="doi" href="https://doi.org/10.1287/mnsc.2023.00522" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                doi.org/10.1287/mnsc.2023.00522
+              </a>
+            </div>
+            <p class="pextra">Media coverage: Forward Pathway · University of Illinois News.</p>
+          </div>
+        </li>
+
+        <li class="reveal">
+          <span class="pidx">03</span>
+          <div>
+            <p class="ptitle">BMI/Obesity and consumers’ price sensitivity: Implications for food tax policies</p>
+            <p class="pmeta"><b>Ying Bao</b>, Matthew Osborne, Emily Wang, Edward C. Jaenicke</p>
+            <p class="pmeta"><span class="pvenue em">PNAS Nexus</span>, Vol. 3, Issue 6, pgae190.</p>
+            <div class="paper-foot">
+              <span class="yr">2024</span>
+              <a class="doi" href="https://doi.org/10.1093/pnasnexus/pgae190" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                doi.org/10.1093/pnasnexus/pgae190
+              </a>
+            </div>
+            <p class="pextra">Selected for press release. Media coverage: Medical Xpress, Chicago Booth Review, The Conversation, Yahoo!, MSN, and others.</p>
+          </div>
+        </li>
+
+        <li class="reveal">
+          <span class="pidx">02</span>
+          <div>
+            <p class="ptitle">Leveraging visual cues and pricing strategies: An empirical investigation of the pre-owned luxury market</p>
+            <p class="pmeta">Alex Yao, <b>Ying Bao</b></p>
+            <p class="pmeta"><span class="pvenue em">Journal of Global Fashion Marketing</span>, 15(2), 286–301.</p>
+            <div class="paper-foot">
+              <span class="yr">2022</span>
+              <a class="doi" href="https://doi.org/10.1080/20932685.2022.2085609" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                doi.org/10.1080/20932685.2022.2085609
+              </a>
+            </div>
+          </div>
+        </li>
+
+        <li class="reveal">
+          <span class="pidx">01</span>
+          <div>
+            <p class="ptitle">Designing Product Development Contracts in the Presence of Managerial Lobbying</p>
+            <p class="pmeta"><b>Ying Bao</b>, Mengze Shi, Ajay Kalra</p>
+            <p class="pmeta"><span class="pvenue em">Management Science</span>, 68(9), 6797–6818.</p>
+            <div class="paper-foot">
+              <span class="yr">2022</span>
+              <a class="doi" href="https://doi.org/10.1287/mnsc.2021.4217" target="_blank" rel="noopener">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                doi.org/10.1287/mnsc.2021.4217
+              </a>
+            </div>
+          </div>
+        </li>
+      </ol>
+
+      <p class="subhead reveal" style="margin-top:54px">Working Papers <span class="count">/ under review</span></p>
+      <ol class="papers">
+        <li class="reveal">
+          <span class="pidx">W1</span>
+          <div>
+            <p class="ptitle">The Effect of Quality Disclosure on Market Dynamics: Evidence from Online Review Platforms</p>
+            <p class="pmeta"><b>Ying Bao</b>, Limin Fang, Matthew Osborne</p>
+            <div class="paper-foot">
+              <span class="badge active">Minor Revision</span>
+              <span class="badge neutral">Marketing Science</span>
+            </div>
+            <p class="pextra">Selected for presentation at ASSA (2025), the Digital Economics Conference (2024), the NBER Digital Economics &amp; AI Meeting (2024), the Marketing Strategy Consortium (2024), the Marketing Dynamics Conference (2024), and SICS (2024).</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="pidx">W2</span>
+          <div>
+            <p class="ptitle">Spiral of Silence: How Neutral Moderation Polarizes Content Creation</p>
+            <p class="pmeta"><b>Ying Bao</b>, Jessie Liu</p>
+            <div class="paper-foot">
+              <span class="badge active">Major Revision</span>
+              <span class="badge neutral">Management Science</span>
+            </div>
+            <p class="pextra">Selected for presentation at POMS (2025), IIOC (2025), the Marketing Science Conference (2025), the CESifo Venice Summer Institute (2025), the Marketing Theory Seminars (2025), and the UTD Frank Bass Conference (2026).</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="pidx">W3</span>
+          <div>
+            <p class="ptitle">A Strategic Analysis of Tiered Commission Schemes in Online Marketplaces</p>
+            <p class="pmeta"><b>Ying Bao</b>, Amir Fazli, Antino Kim</p>
+            <div class="paper-foot">
+              <span class="badge neutral">Under Review</span>
+            </div>
+            <p class="pextra">Selected for presentation at POMS (2024).</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="pidx">W4</span>
+          <div>
+            <p class="ptitle">BMI, Food Purchase, and Promotion Sensitivity</p>
+            <p class="pmeta"><b>Ying Bao</b>, Matthew Osborne, Emily Wang, Edward Jaenicke</p>
+            <div class="paper-foot">
+              <span class="badge active">Reject &amp; Resubmit</span>
+              <span class="badge neutral">Marketing Science</span>
+            </div>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="pidx">W5</span>
+          <div>
+            <p class="ptitle">When Good Intentions Backfire: How Corporate Perceptions Shape Consumer Attention and Conservation in Utility Markets</p>
+            <p class="pmeta">Cindy Wang, <b>Ying Bao</b>, Hong Yuan</p>
+            <div class="paper-foot">
+              <span class="badge neutral">Under Review</span>
+            </div>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="pidx">W6</span>
+          <div>
+            <p class="ptitle">The Effect of Ownership Structure on Service Response to Competition: Evidence from the Restaurant Industry</p>
+            <p class="pmeta"><b>Ying Bao</b>, Limin Fang, Jessica Gu, Aric Rindfleisch</p>
+            <div class="paper-foot">
+              <span class="badge neutral">Working paper</span>
+            </div>
+            <p class="pextra">Selected for presentation at the Marketing Science Conference (2025) and AMA Summer (2025).</p>
+          </div>
+        </li>
+        <li class="reveal">
+          <span class="pidx">W7</span>
+          <div>
+            <p class="ptitle">The Effect of Online Review Platforms on Product Variety</p>
+            <p class="pmeta">Jessica Gu, <b>Ying Bao</b>, Limin Fang, Aric Rindfleisch</p>
+            <div class="paper-foot">
+              <span class="badge neutral">Working paper</span>
+            </div>
+          </div>
+        </li>
+      </ol>
+
+    </div>
+  </section>
+
+  <!-- TEACHING -->
+  <section class="block" id="teaching">
+    <div class="wrap">
+      <div class="sec-head reveal">
+        <span class="sec-num">02</span>
+        <h2 class="sec-title">Teaching</h2>
+        <span class="sec-sub">UIUC · 2021 – present</span>
+      </div>
+
+      <p class="teach-interests reveal"><b>Interests:</b> Consumer Analytics · Business Analytics · Marketing Analytics · Marketing Research</p>
+
+      <div class="teach-grid">
+        <div class="reveal">
+          <p class="tcol-label">Undergraduate</p>
+
+          <div class="course">
+            <div class="course-top">
+              <span class="course-code">BADM 395</span>
+              <span class="course-when">2021 – present</span>
+            </div>
+            <p class="course-name">Consumer Analytics <span class="lang">in R</span></p>
+            <div class="awards">
+              <span class="award"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg>Teaching Excellence ’23 · ’24 · ’25 · ’26</span>
+            </div>
+          </div>
+
+          <div class="course">
+            <div class="course-top">
+              <span class="course-code">BADM 322</span>
+              <span class="course-when">2024 – present</span>
+            </div>
+            <p class="course-name">Marketing Research</p>
+            <div class="awards">
+              <span class="award"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg>Teaching Excellence ’24 · ’25 · ’26</span>
+            </div>
+          </div>
+
+          <div class="course">
+            <div class="course-top">
+              <span class="course-code">BADM 211</span>
+              <span class="course-when">2021 – 2023</span>
+            </div>
+            <p class="course-name">Business Analytics <span class="lang">in Python</span></p>
+            <div class="awards">
+              <span class="award"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg>Teaching Excellence ’23</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal">
+          <p class="tcol-label">Graduate</p>
+          <div class="course">
+            <div class="course-top">
+              <span class="course-code">BADM 590</span>
+              <span class="course-when">2021 – present</span>
+            </div>
+            <p class="course-name">Consumer Analytics <span class="lang">in R</span></p>
+            <div class="awards">
+              <span class="award"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="6"/><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"/></svg>Teaching Excellence ’23 · ’24 · ’25 · ’26</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- CONTACT / FOOTER -->
+<footer class="foot" id="contact">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="reveal">
+        <p class="foot-cta">Always glad to talk about<br/>platforms, food, and behavior.</p>
+        <a class="foot-mail" href="mailto:ybao@illinois.edu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-10 6L2 7"/></svg>
+          ybao@illinois.edu
+        </a>
+      </div>
+      <div class="foot-links reveal">
+        <a href="https://giesbusiness.illinois.edu/profile/ying-bao" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18"/><path d="M5 21V7l8-4v18"/><path d="M19 21V11l-6-4"/></svg>
+          Gies faculty profile
+        </a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span class="brand-sm">Ying Bao</span>
+      <span>Gies College of Business · University of Illinois Urbana-Champaign</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // sticky nav border + scroll-spy
+  const nav = document.getElementById('nav');
+  const navLinks = [...document.querySelectorAll('nav.links a[href^="#"]')];
+  const sections = ['research','teaching','contact'].map(id => document.getElementById(id));
+
+  const onScroll = () => {
+    nav.classList.toggle('scrolled', window.scrollY > 8);
+    let current = '';
+    for (const s of sections){
+      if (s && s.getBoundingClientRect().top <= 140) current = s.id;
+    }
+    navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href') === '#' + current));
+  };
+  window.addEventListener('scroll', onScroll, {passive:true});
+  onScroll();
+
+  // mobile menu
+  const menuBtn = document.getElementById('menuBtn');
+  const links = document.getElementById('navlinks');
+  menuBtn.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    menuBtn.setAttribute('aria-expanded', open);
+  });
+  links.addEventListener('click', e => {
+    if (e.target.tagName === 'A') { links.classList.remove('open'); menuBtn.setAttribute('aria-expanded', false); }
+  });
+
+  // reveal on scroll (respects reduced motion via CSS)
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, {threshold:.12, rootMargin:'0px 0px -40px 0px'});
+  document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+</script>
+</body>
+</html>
